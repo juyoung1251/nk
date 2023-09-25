@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<script>
+    function msm(){
+        var newMs = document.createElement("div");
+        newMs.innerHTML = document.getElementById("te").value;
+        newMs.onclick = rm;
+        document.getElementById("ml").appendChild(newMs);
+        saveMs();
+    }
+function rm(){
+    document.getElementById("ml").removeChild(this);
+    saveMs();
+}
+function saveMs(){
+    localStorage.sml = document.getElementById("ml").innerHTML;
+}
+function loadMs(){
+    document.getElementById("ml").innerHTML = localStorage.sml;
+    for(var i=0; i< ml.children.length; i++){
+        ml.children[i].onclick=removeMs;
+    }
+}
+</script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,body{
+            background-color: pink;
+            display: flex;
+            flex-direction: column;
+            align-items:center ;
+            
+        }
+        .bg{
+            background-color: white;
+            border-radius: 10px;
+            width: 500px;
+            height: 800px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+       }
+       #te{
+        height: 200PX;
+        width: 350px;
+        margin-top: 30px;
+       }
+    </style>
+</head>
+<body>
+    <h2> My Page에 오신걸 환영합니다!</h2>
+    방명록을 작성해주세요 <br><br>
+    <div class="bg"> 
+    
+    <textarea id="te"> </textarea>
+    <button class="bt" onclick="msm();"> 검색 </button>
+    <div id="ml">
+        <script>
+            if(localStorage.sml){
+                loadMs();
+            }
+        </script>
+    </div>
+</div>
+</body>
+</html>
